@@ -1,0 +1,38 @@
+@{
+    ViewData["Title"] = "Register";
+}
+<div class="container">
+    <div class="register box">
+
+        <h3>Register</h3>
+        <form action="Register" method="post">
+            <label for="fname">First Name:</label>
+            <input id="fname" type="text" name="FirstName"><br> 
+
+            <label for="lanem">Last Name:</label>
+            <input id="lname" type="text" name="LastName"><br>
+
+            <label for="email">Email:</label>
+            <input id="email" type="email" name="Email"><br>
+
+            <label for="pw">Password:</label>
+            <input id="pw" type="password" name="Password"><br>
+
+            <label for="pw_conf">Password Confirm:</label>
+            <input id="pw_conf" type="password" name="PasswordConfirmation"><br><br>
+
+            <input type="submit" value="Register" class="btn btn-success">
+        </form><br>
+
+        <a href="Login">Log In</a>
+    </div>
+    <div>
+        @{
+            foreach(var error in ViewBag.Errors){
+                if(@error.Errors.Count > 0){
+                    <p>@error.Errors[0].ErrorMessage</p>
+                }
+            }
+        }
+    </div>
+</div>
