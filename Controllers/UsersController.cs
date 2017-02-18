@@ -27,9 +27,20 @@ namespace BankAccount.Controllers
         [HttpGet]
         [Route("Login")]
         public IActionResult Login(){
+            ViewBag.Errors = "";
             return View();
         }
 
+        // GET: /Dashboard/
+        [HttpGet]
+        [Route("Dashboard")]
+        public IActionResult Dashboard(){
+            ViewBag.CurrentUser = _context.Users.SingleOrDefault(user => user.UserId == HttpContext.Session.GetInt32("CurrUserId"));
+            return View();
+        }
+
+
+        // Register //
         [HttpPost]
         [Route("Register")]
         public IActionResult RegisterUser(RegisterViewModel model){
@@ -38,20 +49,54 @@ namespace BankAccount.Controllers
                 User NewUser = new User{
                     FirstName = model.FirstName,
                     LastName = model.LastName,
-                    Email = model.Email,
+                    Password = model.Password,
+                    Email = model.Email,                    
                     Money = 0
                 };
                 NewUser.Password = Hasher.HashPassword(NewUser, NewUser.Password);
                 _context.Add(NewUser);
+                _context.SaveChanges();
 
 
                 User CurrentUser = _context.Users.SingleOrDefault(user => user.Email == NewUser.Email);
                 HttpContext.Session.SetInt32("CurrUserId", CurrentUser.UserId);
-                return View("Success");
+                return RedirectToAction("Dashboard");
             } else {
                 ViewBag.Errors = ModelState.Values;
                 return View("Register");
             }
+        }
+
+
+        // Log In//
+        [HttpPost]
+        [Route("LoginUser")]
+        public IActionResult LoginUser(string email, string PwToCheck){
+            var user = _context.Users.SingleOrDefault(userr => userr.Email == email);
+            if(user != null && PwToCheck != null){
+                var Hasher = new PasswordHasher<User>();
+                if(0 != Hasher.VerifyHashedPassword(user, user.Password, PwToCheck)){
+                    HttpContext.Session.SetInt32("CurrUserId", user.UserId);
+                    return RedirectToAction("Dashboard");
+                } else {
+                    ViewBag.Errors = "Invalid Name or Password";
+                    return View("Login");
+                }
+            } else {
+                ViewBag.Errors = "Invalid Name or Password";
+                return View("Login");
+            }
+
+        }
+
+
+
+        // GET: /Log Out/
+        [HttpGet]
+        [Route("Logout")]
+        public IActionResult Logout(){
+            HttpContext.Session.Clear();
+            return View("Login");
         }
     }
 
