@@ -36,6 +36,17 @@ namespace BankAccount.Controllers
         [Route("Dashboard")]
         public IActionResult Dashboard(){
             ViewBag.CurrentUser = _context.Users.SingleOrDefault(user => user.UserId == HttpContext.Session.GetInt32("CurrUserId"));
+            if(ViewBag.AllActions == null){
+                ViewBag.AllActions = _context.Actions.Where(action => action.UserId == HttpContext.Session.GetInt32("CurrUserId")).ToList();
+            } else {
+                ViewBag.AllActions = new List<BankAccount.Models.Action>();
+            }
+
+            if(ViewBag.WithdrawError == null){
+                ViewBag.WithdrawError = "";
+            } else {
+                ViewBag.WithdrawError = HttpContext.Session.GetString("WithdrawError");
+            }
             return View();
         }
 

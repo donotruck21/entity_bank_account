@@ -14,5 +14,26 @@
         </form>
         <h2 class="balance">Current Balance: @ViewBag.CurrentUser.Money</h2>
     </div>
+    <p>@ViewBag.WithdrawError</p>
     <hr>
+    <div>
+        <table class="table table-striped myTable table-bordered">
+            <thead>
+                <tr>
+                    <th>Amount</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    foreach(var action in ViewBag.AllActions){
+                        <tr>
+                            <td>@action.Amount</td>
+                            <td>@action.CreatedAt.ToString("MMM dd yyyy hh:mm tt")</td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
 </div>
