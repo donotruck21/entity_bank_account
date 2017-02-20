@@ -2,6 +2,17 @@
     ViewData["Title"] = "Dashboard";
 }
 <div class="container">
-    <h1>Welcome @ViewBag.CurrentUser.FirstName @ViewBag.CurrentUser.LastName!</h1>
-    <a href="Logout">Logout</a>
+    <h1 class="welcome">Welcome @ViewBag.CurrentUser.FirstName @ViewBag.CurrentUser.LastName!</h1>
+    <a href="Logout" class="logout">Logout</a>
+    <hr>
+    <div class="header">
+        <form action="Action" method="post" class="depositForm">
+            <label for="deposit">Deposit/Withdraw:</label>
+            <input type="number" name="amount">
+
+            <input type="submit" value="Submit" class="btn btn-success">
+        </form>
+        <h2 class="balance">Current Balance: @ViewBag.CurrentUser.Money</h2>
+    </div>
+    <hr>
 </div>

@@ -24,7 +24,7 @@
     left: 20px;
 }
 
-form{
+.myForm{
     margin-top: 20px;
     width: 310px;
 }
@@ -37,4 +37,16 @@ form{
 .login label{
     width: 100px;
     text-align: right;
+}
+
+.welcome, .balance, .depositForm{
+    display: inline-block;
+}
+
+.logout{
+    margin-left: 150px;
+}
+
+.balance{
+    margin-left: 100px;
 }

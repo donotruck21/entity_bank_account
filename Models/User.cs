@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+
 namespace BankAccount.Models
 {
     public abstract class BaseEntity {}
@@ -12,5 +14,10 @@ namespace BankAccount.Models
         public int Money { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
+
+        public List<Action> Actions { get; set; }
+        public User(){
+            Actions = new List<Action>();
+        }
     }
 }

@@ -185,7 +185,9 @@
 -resource:"/Users/donotruck21/Desktop/csharp/entity/bankAccount/obj/Debug/netcoreapp1.0/bankAccountdotnet-compile.deps.json",bankAccount.deps.json
 "/Users/donotruck21/Desktop/csharp/entity/bankAccount/Program.cs"
 "/Users/donotruck21/Desktop/csharp/entity/bankAccount/Startup.cs"
+"/Users/donotruck21/Desktop/csharp/entity/bankAccount/Controllers/ActionsController.cs"
 "/Users/donotruck21/Desktop/csharp/entity/bankAccount/Controllers/UsersController.cs"
+"/Users/donotruck21/Desktop/csharp/entity/bankAccount/Models/Action.cs"
 "/Users/donotruck21/Desktop/csharp/entity/bankAccount/Models/BankAccountContext.cs"
 "/Users/donotruck21/Desktop/csharp/entity/bankAccount/Models/RegisterViewModel.cs"
 "/Users/donotruck21/Desktop/csharp/entity/bankAccount/Models/User.cs"

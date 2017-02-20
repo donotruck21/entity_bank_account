@@ -7,5 +7,6 @@ namespace BankAccount.Models
         { }
  
         public DbSet<User> Users { get; set; }
+        public DbSet<Action> Actions { get; set; }
     }
 }
