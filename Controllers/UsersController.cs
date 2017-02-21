@@ -19,6 +19,8 @@ namespace BankAccount.Controllers
         [HttpGet]
         [Route("")]
         public IActionResult Register(){
+            int thing = 34635;
+            Console.WriteLine(thing.GetType());
             ViewBag.Errors = new List<User>();
             return View();
         }
