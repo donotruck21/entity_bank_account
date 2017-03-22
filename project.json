@@ -18,6 +18,15 @@
   "frameworks": {
     "netcoreapp1.0": {}
   },
+  
+  "publishOptions": {
+    "include": [
+        "Content",
+        "Views",
+        "web.config",
+        "appsettings.json"
+    ]
+},
 
   "buildOptions": {
     "emitEntryPoint": true,
